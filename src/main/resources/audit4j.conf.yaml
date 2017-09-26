@@ -1,0 +1,5 @@
+!Configuration
+handlers:
+- !org.audit4j.core.handler.ConsoleAuditHandler {}
+layout: !org.audit4j.core.layout.SimpleLayout {}
+metaData: !hello.audit.AuditMetaData {}
