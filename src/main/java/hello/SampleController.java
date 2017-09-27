@@ -4,6 +4,8 @@ import org.audit4j.core.annotation.Audit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +14,15 @@ import org.springframework.web.bind.annotation.*;
 @EnableAutoConfiguration
 
 @Audit
-public class SampleController {
+public class SampleController extends SpringBootServletInitializer {
 
     @Autowired
     MyService myService;
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SampleController.class);
+    }
 
     @Audit
     @RequestMapping("/test")
